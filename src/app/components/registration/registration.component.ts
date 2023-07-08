@@ -12,6 +12,7 @@ import {Router} from "@angular/router";
 export class RegistrationComponent {
   user: User;
   message: any;
+  status: any;
 
   constructor(private registrationService: RegistrationService,
               private authService: AuthService,
@@ -21,7 +22,15 @@ export class RegistrationComponent {
 
   registerUser(): void {
     let response = this.registrationService.register(this.user);
-    response.subscribe((data) => this.message = data);
-    this.router.navigate(['auth/authenticate']);
+    response.subscribe(
+      data => {
+        this.message = data;
+        this.status = data.status;
+      });
+
+    if (this.status == 200) {
+      this.router.navigate(['auth/authenticate']);
+    }
+
   }
 }

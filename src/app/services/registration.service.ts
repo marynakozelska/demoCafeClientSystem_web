@@ -15,6 +15,6 @@ export class RegistrationService {
 
   register(user: User) {
     console.log("Service register...")
-    return this.http.post(`${this.baseURL}`, user, {responseType: 'text' as 'json'});
+    return this.http.post(`${this.baseURL}`, user, {observe: 'response'});
   }
 }
