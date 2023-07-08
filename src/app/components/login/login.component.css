@@ -1,0 +1,13 @@
+form {
+  margin: 5% 40%;
+}
+
+.form-input-box {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 10px;
+}
+
+.form-submit {
+  margin-top: 5%;
+}

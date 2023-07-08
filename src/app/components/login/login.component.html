@@ -1,0 +1,15 @@
+<form (ngSubmit)="authenticateUser()" method="post">
+  <h3>Login</h3>
+
+  <div class="form-input-box">
+    <label for="email">Login:</label>
+    <input type="text" id="email" name="login" [(ngModel)]="user.email">
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" [(ngModel)]="user.password">
+  </div>
+
+  <div class="form-submit">
+    <input type="submit" value="Log in">
+  </div>
+</form>
