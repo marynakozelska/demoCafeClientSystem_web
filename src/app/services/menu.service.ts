@@ -12,7 +12,7 @@ export class MenuService {
   constructor(private http: HttpClient) {
   }
 
-  public getFullMenu(): Observable<MenuItem[]> {
-    return this.http.get<MenuItem[]>(`${this.baseURL}`);
+  public getFullMenu(): Observable<{ [category: string]: MenuItem[] }> {
+    return this.http.get<{ [category: string]: MenuItem[] }>(`${this.baseURL}`);
   }
 }

@@ -2,11 +2,23 @@
   <h3>Це прихований текст</h3>
 </div>
 
-<h3>Тут буде меню :)</h3>
-<div class="menu-container">
-  <div class="menu-item" *ngFor="let item of menu">
-    <h4>{{item.name}}</h4>
-    <p>Description: {{item.description}}</p>
-    <p>Price: {{item.price}}</p>
+<div class="category-navigation">
+  <div class="category-navigation-element" *ngFor="let item of menu">
+    <a [routerLink]="['/menu']" fragment="{{ item.category }}">{{ item.category }}</a>
   </div>
+</div>
+
+<div class="menu-container">
+
+  <div *ngFor="let item of menu" id="{{ item.category }}">
+    <h2>{{ item.category }}</h2>
+    <ul>
+      <li class="menu-item" *ngFor="let item of item.items">
+        <h3>{{ item.name }}</h3>
+        <p>Price: {{ item.price }}</p>
+        <p>Description: {{ item.description }}</p>
+      </li>
+    </ul>
+  </div>
+
 </div>

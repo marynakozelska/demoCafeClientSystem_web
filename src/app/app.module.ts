@@ -10,9 +10,9 @@ import {HomeComponent} from './components/home/home.component';
 import {RegistrationComponent} from './components/registration/registration.component';
 import {FormsModule} from "@angular/forms";
 import {CustomerComponent} from './components/customer/customer.component';
-import { HeaderComponent } from './components/header/header.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MenuComponent } from './components/menu/menu.component';
+import {HeaderComponent} from './components/header/header.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {MenuComponent} from './components/menu/menu.component';
 import {AuthGuardService} from "./services/auth-guard.service";
 
 @NgModule({
@@ -31,12 +31,15 @@ import {AuthGuardService} from "./services/auth-guard.service";
     HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot([
-      {path: '', component: HomeComponent},
-      {path: 'auth/authenticate', component: LoginComponent},
-      {path: 'auth/register', component: RegistrationComponent},
-      {path: 'profile', component: CustomerComponent},
-      {path: 'menu', component: MenuComponent},
-    ]),
+        {path: '', component: HomeComponent},
+        {path: 'auth/authenticate', component: LoginComponent},
+        {path: 'auth/register', component: RegistrationComponent},
+        {path: 'profile', component: CustomerComponent},
+        {path: 'menu', component: MenuComponent},
+      ],
+      {
+        anchorScrolling: 'enabled'
+      }),
     FormsModule,
     NgbModule
   ],
