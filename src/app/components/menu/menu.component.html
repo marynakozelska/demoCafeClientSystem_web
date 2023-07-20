@@ -11,14 +11,20 @@
 <div class="menu-container">
 
   <div *ngFor="let item of menu" id="{{ item.category }}">
+
     <h2>{{ item.category }}</h2>
     <ul>
       <li class="menu-item" *ngFor="let item of item.items">
         <h3>{{ item.name }}</h3>
         <p>Price: {{ item.price }}</p>
         <p>Description: {{ item.description }}</p>
+
+        <button (click)="addProductToCart(item)">
+          Додати
+        </button>
       </li>
     </ul>
+
   </div>
 
 </div>

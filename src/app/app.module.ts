@@ -14,6 +14,7 @@ import {HeaderComponent} from './components/header/header.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MenuComponent} from './components/menu/menu.component';
 import {AuthGuardService} from "./services/auth-guard.service";
+import {CartComponent} from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {AuthGuardService} from "./services/auth-guard.service";
     RegistrationComponent,
     CustomerComponent,
     HeaderComponent,
-    MenuComponent
+    MenuComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +38,7 @@ import {AuthGuardService} from "./services/auth-guard.service";
         {path: 'auth/register', component: RegistrationComponent},
         {path: 'profile', component: CustomerComponent},
         {path: 'menu', component: MenuComponent},
+        {path: 'cart', component: CartComponent},
       ],
       {
         anchorScrolling: 'enabled'

@@ -3,6 +3,7 @@ import {NavigationEnd, Router} from "@angular/router";
 import {MenuService} from "../../services/menu.service";
 import {MenuItem} from "../../entities/menu-item";
 import {AuthService} from "../../services/auth.service";
+import {CartService} from "../../services/cart.service";
 
 @Component({
   selector: 'app-menu',
@@ -14,7 +15,8 @@ export class MenuComponent {
 
   constructor(public router: Router,
               private service: MenuService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private cartService: CartService) {
   }
 
   ngOnInit(): void {
@@ -50,6 +52,10 @@ export class MenuComponent {
 
   public isAdmin(): boolean {
     return this.authService.isAdmin();
+  }
+
+  public addProductToCart(item: MenuItem) {
+    this.cartService.addToCart(item);
   }
 
   scroll(el: HTMLElement) {
