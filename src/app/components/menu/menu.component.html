@@ -1,6 +1,6 @@
-<div class="add-menu-item-container" *ngIf="isAdmin()">
-  <h3>Це прихований текст</h3>
-</div>
+<!--<div class="add-menu-item-container" *ngIf="isAdmin()">-->
+<!--  <h3>Це прихований текст</h3>-->
+<!--</div>-->
 
 <div class="category-navigation">
   <div class="category-navigation-element" *ngFor="let item of menu">
@@ -19,7 +19,7 @@
         <p>Price: {{ item.price }}</p>
         <p>Description: {{ item.description }}</p>
 
-        <button (click)="addProductToCart(item)">
+        <button class="simple-btn" (click)="addProductToCart(item)">
           Додати
         </button>
       </li>

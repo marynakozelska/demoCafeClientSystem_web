@@ -1,1 +1,17 @@
 @import "~bootstrap/dist/css/bootstrap.css";
+
+.simple-btn {
+  padding: 5px 10px;
+  margin: 3px;
+
+  background-color: white;
+  border: black solid 1px;
+  border-radius: 10px;
+
+  transition-duration: 0.4s;
+}
+
+.simple-btn:hover {
+  background-color: black;
+  color: white;
+}
