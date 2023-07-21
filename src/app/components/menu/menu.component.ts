@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
 import {MenuService} from "../../services/menu.service";
 import {MenuItem} from "../../entities/menu-item";
@@ -8,10 +8,12 @@ import {CartService} from "../../services/cart.service";
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.css'],
 })
 export class MenuComponent {
   menu: { category: string; items: MenuItem[] }[] = [];
+  addedItem: MenuItem;
+  showModalItemAdded: boolean = false;
 
   constructor(public router: Router,
               private service: MenuService,
@@ -56,6 +58,12 @@ export class MenuComponent {
 
   public addProductToCart(item: MenuItem) {
     this.cartService.addToCart(item);
+
+    this.addedItem = item;
+    this.showModalItemAdded = true;
+    setTimeout(() => {
+      this.showModalItemAdded = false;
+    }, 3000);
   }
 
   scroll(el: HTMLElement) {

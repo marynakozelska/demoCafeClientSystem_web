@@ -38,3 +38,16 @@
   color: black;
 }
 
+.modal-item-added {
+  position: fixed;
+  padding: 20px;
+  width: 100%;
+  top: 90vh;
+  left: auto;
+
+  color: white;
+  background: #9481cb;
+
+  transition: all 5s ease-in-out;
+}
+
