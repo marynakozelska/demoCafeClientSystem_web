@@ -15,6 +15,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MenuComponent} from './components/menu/menu.component';
 import {AuthGuardService} from "./services/auth-guard.service";
 import {CartComponent} from './components/cart/cart.component';
+import { MenuItemComponent } from './components/menu-item/menu-item.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {CartComponent} from './components/cart/cart.component';
     CustomerComponent,
     HeaderComponent,
     MenuComponent,
-    CartComponent
+    CartComponent,
+    MenuItemComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +40,8 @@ import {CartComponent} from './components/cart/cart.component';
         {path: 'auth/register', component: RegistrationComponent},
         {path: 'profile', component: CustomerComponent},
         {path: 'menu', component: MenuComponent},
+        {path: 'menu/manage/add', component: MenuItemComponent},
+        {path: 'menu/manage/:id', component: MenuItemComponent},
         {path: 'cart', component: CartComponent},
       ],
       {

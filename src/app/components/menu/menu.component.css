@@ -51,3 +51,7 @@
   transition: all 5s ease-in-out;
 }
 
+.add-menu-item-container {
+  padding: 2%;
+  background: #ffece3;
+}

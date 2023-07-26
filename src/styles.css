@@ -4,7 +4,7 @@
   padding: 5px 10px;
   margin: 3px;
 
-  background-color: white;
+  background-color: inherit;
   border: black solid 1px;
   border-radius: 10px;
 
@@ -14,4 +14,10 @@
 .simple-btn:hover {
   background-color: black;
   color: white;
+}
+
+input {
+  border: black solid 1px;
+  border-radius: 10px;
+  padding: 5px;
 }
