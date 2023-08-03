@@ -1,0 +1,22 @@
+@import url('https://fonts.cdnfonts.com/css/avenir');
+
+.navbar {
+  background: #f8b63b;
+}
+
+.home {
+  font-family: 'Avenir', sans-serif;
+  font-size: 21px;
+  text-transform: uppercase;
+
+  text-align: center;
+  color: #2d9595;
+}
+
+.home a {
+  margin-top: 10px;
+}
+
+.admin-bar {
+
+}
