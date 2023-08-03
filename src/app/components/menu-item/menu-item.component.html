@@ -1,0 +1,35 @@
+<div class="menu-item-input-box">
+  <h3 *ngIf="!isCreating()">Редагування позиції меню:</h3>
+  <h3 *ngIf="isCreating()">Створення позиції меню:</h3>
+
+  <p>Назва:</p>
+  <input
+    class="name"
+    placeholder="{{ item.name }}"
+    [(ngModel)]="item.name">
+
+  <p>Ціна:</p>
+  <input
+    placeholder="{{ item.price }}"
+    [(ngModel)]="item.price">
+
+  <p>Опис:</p>
+  <input
+    class="description"
+    placeholder="{{ item.description }}"
+    [(ngModel)]="item.description">
+
+  <p>Категорія:</p>
+
+  <select id="categorySelect" [(ngModel)]="item.category">
+    <option *ngFor="let category of categories"
+            [value]="category">
+      {{ category }}
+    </option>
+  </select>
+
+  <button class="simple-btn" (click)="saveItem()">
+    Зберегти
+  </button>
+
+</div>

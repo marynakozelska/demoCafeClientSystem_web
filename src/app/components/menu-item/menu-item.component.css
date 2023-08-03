@@ -1,0 +1,19 @@
+.menu-item-input-box {
+  margin: 10%;
+}
+
+.description, .name {
+  width: 500px;
+}
+
+p {
+  margin-top: 3%;
+}
+
+select {
+  cursor: pointer;
+  background: white;
+
+  height: 30px;
+  width: 120px;
+}

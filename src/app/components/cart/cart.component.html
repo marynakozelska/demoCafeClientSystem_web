@@ -1,0 +1,47 @@
+<div class="cart" *ngIf="!isEmpty()">
+  <div>
+    <h1>Корзина</h1>
+
+    <li class="menu-item" *ngFor="let item of cart.items">
+      <div>
+        <h3>{{ item.item.name }}</h3>
+        <p>Price: {{ item.item.price }}</p>
+      </div>
+      <div class="menu-item-buttons-flex">
+        <a class="count-changer-btn" (click)="addCount(item)">
+          <img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/add--v1.png" alt="add--v1"/>
+        </a>
+        <p>{{ item.itemCount }}</p>
+        <a class="count-changer-btn" (click)="removeCount(item)">
+          <img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/minus.png" alt="minus"/>
+        </a>
+      </div>
+    </li>
+
+    <div class="total">
+      <h5>Разом: {{ countTotal() }} грн</h5>
+    </div>
+  </div>
+
+  <div class="form-input-box">
+    <h5>Номер столика:</h5>
+    <input [(ngModel)]="table">
+
+    <div class="form-input-buttons">
+      <button class="simple-btn" (click)="clean()">
+        Очистити корзину
+      </button>
+
+      <button class="simple-btn" (click)="sendOrder()">
+        Замовити
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="empty-cart" *ngIf="isEmpty()">
+  <h2>Ой, а у корзині поки пусто...</h2>
+  <button class="simple-btn" routerLink="/menu">
+    Меню
+  </button>
+</div>

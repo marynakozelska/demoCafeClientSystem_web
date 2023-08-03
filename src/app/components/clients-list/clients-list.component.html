@@ -1,0 +1,14 @@
+<table class="minimal-table">
+  <thead>
+  <tr>
+    <th>Ім'я</th>
+    <th>Електронна пошта</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let client of clients">
+    <td>{{ client.firstName }}</td>
+    <td>{{ client.email }}</td>
+  </tr>
+  </tbody>
+</table>

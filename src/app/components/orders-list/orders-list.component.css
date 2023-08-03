@@ -1,0 +1,44 @@
+.orders-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+  align-items: baseline;
+
+  margin: 2% 5%;
+}
+
+.sorted-orders-box {
+  margin: 1% 4%;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.order-column {
+  background: #f5f5f5;
+  border: black solid 0;
+  border-radius: 8px;
+  padding: 2%;
+}
+
+.order-item {
+  margin: 3%;
+}
+
+.example-list {
+  min-height: 20vh;
+}
+
+/* active and inactive button colors */
+
+.button-active {
+  background-color: black;
+  color: white;
+}
+
+.button-inactive {
+  background-color: #ffffff;
+  color: #000000;
+}
+

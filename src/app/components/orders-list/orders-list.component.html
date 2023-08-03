@@ -1,0 +1,64 @@
+<button class="simple-btn"
+        (click)="showAll()"
+        [ngClass]=" { 'button-active': !showTableClicked, 'button-inactive': showTableClicked }">
+  Всі замовлення
+</button>
+<button class="simple-btn"
+        (click)="showTable()"
+        [ngClass]=" { 'button-active': showTableClicked, 'button-inactive': !showTableClicked }">
+  Kanban Board
+</button>
+
+<div class="orders-box" *ngIf="!showTableClicked">
+  <div *ngFor="let order of orders">
+    <app-order [order]="order"></app-order>
+  </div>
+</div>
+
+<div class="sorted-orders-box" *ngIf="showTableClicked" cdkDropListGroup>
+  <div class="order-column">
+    <h3>New Orders</h3>
+    <div
+      id="newOrders"
+      cdkDropList
+      [cdkDropListData]="newOrders"
+      cdkDropListConnectedTo="inProcess"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="order-item" *ngFor="let order of newOrders" cdkDrag>
+        <app-order [order]="order"></app-order>
+      </div>
+    </div>
+  </div>
+
+  <div class="order-column">
+    <h3>In Process</h3>
+    <div
+      id="inProcess"
+      cdkDropList
+      [cdkDropListData]="inProcessOrders"
+      cdkDropListConnectedTo="waitingForPayment"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="order-item" *ngFor="let order of inProcessOrders" cdkDrag>
+        <app-order [order]="order"></app-order>
+      </div>
+    </div>
+  </div>
+
+  <div class="order-column">
+    <h3>Waiting For Payment</h3>
+    <div
+      id="waitingForPayment"
+      cdkDropList
+      [cdkDropListData]="waitingPaymentOrders"
+      cdkDropListConnectedTo="inProcess"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="order-item" *ngFor="let order of waitingPaymentOrders" cdkDrag>
+        <app-order [order]="order"></app-order>
+      </div>
+    </div>
+  </div>
+
+</div>

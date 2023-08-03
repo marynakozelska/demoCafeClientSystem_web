@@ -15,7 +15,12 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MenuComponent} from './components/menu/menu.component';
 import {AuthGuardService} from "./services/auth-guard.service";
 import {CartComponent} from './components/cart/cart.component';
-import { MenuItemComponent } from './components/menu-item/menu-item.component';
+import {MenuItemComponent} from './components/menu-item/menu-item.component';
+import {ClientsListComponent} from './components/clients-list/clients-list.component';
+import {OrdersListComponent} from './components/orders-list/orders-list.component';
+import {OrderComponent} from './components/order/order.component';
+import {CdkDrag, CdkDropList, DragDropModule} from "@angular/cdk/drag-drop";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -27,11 +32,16 @@ import { MenuItemComponent } from './components/menu-item/menu-item.component';
     HeaderComponent,
     MenuComponent,
     CartComponent,
-    MenuItemComponent
+    MenuItemComponent,
+    ClientsListComponent,
+    OrdersListComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,
     NgbModule,
+    CommonModule,
+    DragDropModule,
     HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot([
@@ -42,13 +52,25 @@ import { MenuItemComponent } from './components/menu-item/menu-item.component';
         {path: 'menu', component: MenuComponent},
         {path: 'menu/manage/add', component: MenuItemComponent},
         {path: 'menu/manage/:id', component: MenuItemComponent},
+        {path: 'users/manage', component: ClientsListComponent},
+        {path: 'order/manage', component: OrdersListComponent},
+        {
+          path: 'order/manage/active/',
+          children: [
+            {path: 'new', component: OrdersListComponent},
+            {path: 'process', component: OrdersListComponent},
+            {path: 'waiting-payment', component: OrdersListComponent}
+          ]
+        },
         {path: 'cart', component: CartComponent},
       ],
       {
         anchorScrolling: 'enabled'
       }),
     FormsModule,
-    NgbModule
+    NgbModule,
+    CdkDropList,
+    CdkDrag
   ],
   providers: [AuthGuardService],
   bootstrap: [AppComponent]
