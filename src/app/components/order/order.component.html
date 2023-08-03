@@ -1,0 +1,14 @@
+<div class="order">
+  <table class="minimal-table">
+    <tr *ngFor="let item of order.menuItems">
+      <td>{{ item.menuItem.name }}</td>
+      <td>{{ item.menuItem.price }}</td>
+      <td>{{ item.count }}</td>
+    </tr>
+  </table>
+
+  <div class="order-data">
+    <p>Customer: {{ order.user.firstName }}</p>
+    <p>Table #{{ order.tableNumber }}</p>
+  </div>
+</div>

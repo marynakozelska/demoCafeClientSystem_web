@@ -4,7 +4,7 @@
   padding: 5px 10px;
   margin: 3px;
 
-  background-color: white;
+  background-color: inherit;
   border: black solid 1px;
   border-radius: 10px;
 
@@ -14,4 +14,30 @@
 .simple-btn:hover {
   background-color: black;
   color: white;
+}
+
+input {
+  border: black solid 1px;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.minimal-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.minimal-table th,
+.minimal-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.minimal-table th {
+  background-color: #f2f2f2;
+}
+
+.minimal-table tr:hover {
+  background-color: #ddd;
 }

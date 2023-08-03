@@ -1,0 +1,16 @@
+.order {
+  border: black solid 1px;
+  border-radius: 10px;
+  background: white;
+
+  padding: 4%;
+}
+
+.order-data {
+  margin-top: 3%;
+}
+
+.order-data .tags {
+  display: flex;
+  flex-direction: row;
+}

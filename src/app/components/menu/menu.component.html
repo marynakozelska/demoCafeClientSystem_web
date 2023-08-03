@@ -1,6 +1,8 @@
-<!--<div class="add-menu-item-container" *ngIf="isAdmin()">-->
-<!--  <h3>Це прихований текст</h3>-->
-<!--</div>-->
+<div class="add-menu-item-container" *ngIf="isAdmin()">
+  <button class="simple-btn" [routerLink]="['/menu/manage/add']">
+    Нова позиція
+  </button>
+</div>
 
 <div class="category-navigation">
   <div class="category-navigation-element" *ngFor="let item of menu">
@@ -20,6 +22,9 @@
 
         <button class="simple-btn" (click)="addProductToCart(item)">
           Додати
+        </button>
+        <button class="simple-btn" [routerLink]="['/menu/manage', item.id ]" *ngIf="isAdmin()">
+          Редагувати
         </button>
       </li>
     </ul>

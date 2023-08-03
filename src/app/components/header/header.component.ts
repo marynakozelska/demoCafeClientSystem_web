@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {CartComponent} from "../cart/cart.component";
+import {Component} from '@angular/core';
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-header',
@@ -7,5 +7,12 @@ import {CartComponent} from "../cart/cart.component";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+
+  constructor(private authService: AuthService) {
+  }
+
+  public isAdmin(): boolean {
+    return this.authService.isAdmin();
+  }
 
 }
