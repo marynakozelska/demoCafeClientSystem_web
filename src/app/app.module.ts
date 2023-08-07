@@ -21,6 +21,7 @@ import {OrdersListComponent} from './components/orders-list/orders-list.componen
 import {OrderComponent} from './components/order/order.component';
 import {CdkDrag, CdkDropList, DragDropModule} from "@angular/cdk/drag-drop";
 import {CommonModule} from "@angular/common";
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import {CommonModule} from "@angular/common";
     ClientsListComponent,
     OrdersListComponent,
     OrderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

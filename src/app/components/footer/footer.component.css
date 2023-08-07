@@ -1,0 +1,25 @@
+.footer {
+  margin-top: 5%;
+}
+
+.footer .info-box {
+  background: #2d9595;
+}
+
+.footer .top-box {
+  background: #2d9595;
+  height: 100px;
+  border: solid 0;
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
+}
+
+.footer p,
+.footer i,
+.footer h6 {
+  color: white;
+}
+
+.footer a {
+  text-decoration: none;
+}
