@@ -16,3 +16,43 @@
   text-transform: uppercase;
   text-align: center;
 }
+
+.services-box {
+  margin: 5%;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.service {
+  margin: 3%;
+  padding: 3%;
+
+  border: black solid 1px;
+  border-radius: 20px;
+}
+
+.popular-box {
+  background: #f8b63b;
+}
+
+.popular-box h1 {
+  font-family: 'Avenir', sans-serif;
+  color: #2d9595;
+  text-align: center;
+}
+
+.popular-item {
+  margin: 5%;
+}
+
+.popular-items-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.btn-block {
+  text-align: center;
+  margin: 5%;
+}
