@@ -1,0 +1,18 @@
+@import url('https://fonts.cdnfonts.com/css/avenir');
+
+.top-box {
+  background: #f8b63b;
+
+  border: solid 0;
+  border-bottom-left-radius: 80%;
+
+  height: 40vh;
+}
+
+.top-box h1 {
+  color: white;
+  font-family: 'Avenir', sans-serif;
+  font-size: 40vh;
+  text-transform: uppercase;
+  text-align: center;
+}
