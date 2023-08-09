@@ -36,4 +36,8 @@ export class MenuService {
 
     return this.http.get<string[]>(`http://localhost:8080/categories`, {headers});
   }
+
+  public getTopDishes() {
+    return this.http.get<MenuItem[]>(`${this.baseURL}/popular`);
+  }
 }

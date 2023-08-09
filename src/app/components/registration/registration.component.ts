@@ -31,6 +31,6 @@ export class RegistrationComponent {
     if (this.status == 200) {
       this.router.navigate(['auth/authenticate']);
     }
-
   }
+
 }
