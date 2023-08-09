@@ -9,6 +9,10 @@
     <input type="password" id="password" name="password" [(ngModel)]="user.password">
   </div>
 
+  <div class="alert-danger" *ngIf="isWrongData">
+    Неправильно введені логін чи пароль
+  </div>
+
   <div class="form-submit">
     <input type="submit" value="Log in">
   </div>

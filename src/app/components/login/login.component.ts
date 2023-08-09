@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent {
   user: User;
-  message: string;
+  isWrongData: boolean;
 
   constructor(private authService: AuthService, public router: Router) {
     if (!authService.isAuthenticated()) {
@@ -21,7 +21,15 @@ export class LoginComponent {
   }
 
   public authenticateUser(): void {
-    this.authService.login(this.user);
+    this.authService.login(this.user).subscribe(
+      () => {
+        this.isWrongData = false;
+        this.router.navigate(['/profile']);
+      },
+      (error) => {
+        console.error('Login error:', error);
+        this.isWrongData = true;
+      })
   }
 
 }

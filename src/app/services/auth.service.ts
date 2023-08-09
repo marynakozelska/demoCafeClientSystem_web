@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {User} from "../entities/user";
 import {Router} from "@angular/router";
+import {catchError, map, Observable, throwError} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -34,17 +35,31 @@ export class AuthService {
     return !!this.getAccessToken();
   }
 
-  public login(user: User) {
-    this.auth(user).subscribe(
-      (response) => {
+  // public login(user: User) {
+  //   this.auth(user).subscribe(
+  //     (response) => {
+  //       this.setAccessToken(response.token);
+  //       localStorage.setItem('role', response.role);
+  //       this.router.navigate(['/profile']);
+  //     },
+  //     (error) => {
+  //       console.log("AUTH ERROR: " + error);
+  //       // Обробити помилку аутентифікації
+  //     }
+  //   );
+  // }
+
+  public login(user: User): Observable<any> {
+    return this.auth(user).pipe(
+      map((response) => {
         this.setAccessToken(response.token);
         localStorage.setItem('role', response.role);
-        this.router.navigate(['/profile']);
-      },
-      (error) => {
-        console.log("AUTH ERROR: " + error);
-        // Обробити помилку аутентифікації
-      }
+        // this.router.navigate(['/profile']);
+        return response;
+      }),
+      catchError((error) => {
+        return throwError("Authentication failed");
+      })
     );
   }
 
