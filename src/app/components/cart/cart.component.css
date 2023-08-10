@@ -58,3 +58,21 @@
 .count-changer-btn {
   cursor: pointer;
 }
+
+.modal-not-logged-in {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 50vmax rgba(0, 0, 0, .5);
+
+  width: 40%;
+  padding: 3%;
+  background: white;
+  border: black solid 0;
+  border-radius: 20px;
+}
+
+.modal-not-logged-in h5 {
+  color: #2d9595;
+}
