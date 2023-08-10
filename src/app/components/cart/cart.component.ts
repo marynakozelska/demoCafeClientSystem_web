@@ -11,6 +11,7 @@ import {CartItem} from "../../entities/cart-item";
 export class CartComponent {
   cart: Cart;
   table: number;
+  isNotLoggedIn: boolean;
 
   constructor(private cartService: CartService) {
   }
@@ -27,12 +28,12 @@ export class CartComponent {
   sendOrder(): void {
     this.cartService.sendOrder(this.table)
       .subscribe(
-        (response) => {
-          console.log('Order sent successfully!', response);
+        () => {
           this.clean();
         },
         (error) => {
           console.error('Error sending order:', error);
+          this.isNotLoggedIn = true;
         }
       )
   }

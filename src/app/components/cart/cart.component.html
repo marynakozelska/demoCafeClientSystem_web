@@ -45,3 +45,15 @@
     Меню
   </button>
 </div>
+
+<div class="modal-not-logged-in" *ngIf="isNotLoggedIn">
+  <h5>Щоб зробити замовлення потрібно увійти на сайт або зареєструватися</h5>
+  <p>Реєстрація займає всього 2 хвилини!</p>
+
+  <button class="simple-btn" routerLink="/auth/authenticate">
+    Увійти
+  </button>
+  <button class="simple-btn" routerLink="/auth/register">
+    Реєстрація
+  </button>
+</div>
