@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {User} from "../entities/user";
 import {Router} from "@angular/router";
-import {catchError, map, Observable, throwError} from "rxjs";
+import {catchError, map, Observable, tap, throwError} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -35,29 +35,35 @@ export class AuthService {
     return !!this.getAccessToken();
   }
 
-  // public login(user: User) {
-  //   this.auth(user).subscribe(
-  //     (response) => {
-  //       this.setAccessToken(response.token);
-  //       localStorage.setItem('role', response.role);
-  //       this.router.navigate(['/profile']);
-  //     },
-  //     (error) => {
-  //       console.log("AUTH ERROR: " + error);
-  //       // Обробити помилку аутентифікації
-  //     }
-  //   );
-  // }
-
   public login(user: User): Observable<any> {
     return this.auth(user).pipe(
       map((response) => {
         this.setAccessToken(response.token);
         localStorage.setItem('role', response.role);
-        // this.router.navigate(['/profile']);
         return response;
       }),
-      catchError((error) => {
+      catchError(() => {
+        return throwError("Authentication failed");
+      })
+    );
+  }
+
+  public refreshToken() {
+    console.log("Refreshing...")
+    const headers = new HttpHeaders()
+      .set('Authorization', 'Bearer ' + this.getAccessToken())
+      .set('isRefreshToken', 'true');
+
+    return this.http.post<any>(
+      `${this.baseURL}/auth/refresh-token`,
+      {},
+      {headers: headers}
+    ).pipe(
+      tap((token) => {
+        this.setAccessToken(token.token);
+      }),
+      catchError(() => {
+        this.logout();
         return throwError("Authentication failed");
       })
     );
@@ -67,7 +73,7 @@ export class AuthService {
     this.removeAccessToken();
     localStorage.removeItem('role');
 
-    console.log("Logout successful! Token: " + this.getAccessToken());
+    console.log("Logout successful!");
     this.router.navigateByUrl('auth/authenticate');
   }
 
