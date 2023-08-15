@@ -16,7 +16,6 @@ export class CustomerService {
   getUser() {
     const token = localStorage.getItem('access_token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    console.log(token);
 
     return this.http.get<User>(`${this.baseURL}`, {headers});
   }

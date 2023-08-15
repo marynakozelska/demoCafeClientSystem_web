@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class CustomerComponent {
   message: string;
-  userData: User;
+  userData: User = {firstName: '', email: '', password: '', role: ''};
 
   constructor(public router: Router,
               private service: CustomerService,
@@ -19,6 +19,9 @@ export class CustomerComponent {
     if (!authService.isAuthenticated()) {
       this.router.navigate(['auth/authenticate']);
     }
+  }
+
+  ngOnInit() {
     this.getInfo();
   }
 
@@ -26,7 +29,6 @@ export class CustomerComponent {
     this.service.getUser()
       .subscribe((response: User) => {
         this.userData = response;
-        console.log(this.userData);
       });
   }
 

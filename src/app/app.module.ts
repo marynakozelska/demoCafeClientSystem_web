@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './components/login/login.component';
 import {RouterModule} from "@angular/router";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {HomeComponent} from './components/home/home.component';
 import {RegistrationComponent} from './components/registration/registration.component';
 import {FormsModule} from "@angular/forms";
@@ -21,7 +21,8 @@ import {OrdersListComponent} from './components/orders-list/orders-list.componen
 import {OrderComponent} from './components/order/order.component';
 import {CdkDrag, CdkDropList, DragDropModule} from "@angular/cdk/drag-drop";
 import {CommonModule} from "@angular/common";
-import { FooterComponent } from './components/footer/footer.component';
+import {FooterComponent} from './components/footer/footer.component';
+import {TokenInterceptor} from "./token.interceptors";
 
 @NgModule({
   declarations: [
@@ -74,7 +75,10 @@ import { FooterComponent } from './components/footer/footer.component';
     CdkDropList,
     CdkDrag
   ],
-  providers: [AuthGuardService],
+  providers: [
+    AuthGuardService,
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
