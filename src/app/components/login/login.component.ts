@@ -12,7 +12,8 @@ export class LoginComponent {
   user: User;
   isWrongData: boolean;
 
-  constructor(private authService: AuthService, public router: Router) {
+  constructor(private authService: AuthService,
+              public router: Router) {
     if (!authService.isAuthenticated()) {
       this.user = new User();
     } else {
