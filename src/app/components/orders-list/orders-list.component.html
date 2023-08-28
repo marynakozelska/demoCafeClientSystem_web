@@ -57,6 +57,7 @@
       (cdkDropListDropped)="drop($event)">
       <div class="order-item" *ngFor="let order of waitingPaymentOrders" cdkDrag>
         <app-order [order]="order"></app-order>
+        <div class="simple-btn" (click)="moveToArchive(order)">Payed</div>
       </div>
     </div>
   </div>
