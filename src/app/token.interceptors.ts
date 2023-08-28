@@ -32,14 +32,14 @@ export class TokenInterceptor implements HttpInterceptor {
       .handle(httpRequest)
       .pipe(catchError(error => {
         if (error instanceof HttpErrorResponse && error.status === 403) {
-          return this.handle401Error(httpRequest, next);
+          return this.handle401Error(httpRequest, next, error);
         }
 
         return throwError(error);
       }));
   }
 
-  private handle401Error(request: HttpRequest<any>, next: HttpHandler) {
+  private handle401Error(request: HttpRequest<any>, next: HttpHandler, error: any) {
 
     if (!this.isRefreshing) {
       this.isRefreshing = true;
@@ -58,13 +58,12 @@ export class TokenInterceptor implements HttpInterceptor {
               return next.handle(this.addTokenHeader(request, token.token));
             }),
             catchError((err) => {
-              console.log(err)
-
               this.isRefreshing = false;
               this.authService.logout();
               return throwError(err);
             })
           );
+      else return throwError(error);
     }
 
     return this.refreshTokenSubject.pipe(

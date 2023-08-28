@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {User} from "../entities/user";
 import {Router} from "@angular/router";
 import {catchError, map, Observable, tap, throwError} from "rxjs";
+import {Order} from "../entities/order";
 
 @Injectable({
   providedIn: 'root'
@@ -83,5 +84,20 @@ export class AuthService {
 
   public isAdmin(): boolean {
     return this.getUserRole() === 'ADMIN';
+  }
+
+  public getActiveCustomerOrders() {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<Order[]>(`http://localhost:8080/order`, {headers});
+  }
+
+  public getPreviousOrders() {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<Order[]>(`http://localhost:8080/order/previous`, {headers});
+
   }
 }

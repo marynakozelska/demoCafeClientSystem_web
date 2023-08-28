@@ -4,3 +4,27 @@
 
   <button class="simple-btn" (click)="logout()">Logout</button>
 </div>
+
+<div class="user-orders-container">
+  <h2>Активні замовлення</h2>
+  <div class="active-orders">
+    <div class="order" *ngFor="let order of activeOrders">
+      <app-order [order]="order"></app-order>
+    </div>
+    <div *ngIf="isActiveOrdersEmpty()">
+      <p>Активних замовлень немає</p>
+    </div>
+  </div>
+</div>
+
+<div class="user-orders-container">
+  <h2>Архів замовлень</h2>
+  <div class="active-orders">
+    <div class="order" *ngFor="let order of previousOrders">
+      <app-order [order]="order"></app-order>
+    </div>
+    <div *ngIf="isPreviousOrdersEmpty()">
+      <p>Архів замовлень пустий :(</p>
+    </div>
+  </div>
+</div>

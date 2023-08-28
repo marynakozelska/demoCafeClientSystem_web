@@ -1,3 +1,19 @@
 .customer-container {
   margin: 2% 5%;
 }
+
+.user-orders-container {
+  border-top: #f8b63b solid 2px;
+  padding: 3%;
+}
+
+.user-orders-container h2 {
+  text-transform: uppercase;
+  color: #2d9595;
+}
+
+.active-orders {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
