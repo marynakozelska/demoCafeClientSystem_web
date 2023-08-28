@@ -11,6 +11,9 @@
     <div class="order" *ngFor="let order of activeOrders">
       <app-order [order]="order"></app-order>
     </div>
+    <div *ngIf="isActiveOrdersEmpty()">
+      <p>Активних замовлень немає</p>
+    </div>
   </div>
 </div>
 
@@ -19,6 +22,9 @@
   <div class="active-orders">
     <div class="order" *ngFor="let order of previousOrders">
       <app-order [order]="order"></app-order>
+    </div>
+    <div *ngIf="isPreviousOrdersEmpty()">
+      <p>Архів замовлень пустий :(</p>
     </div>
   </div>
 </div>

@@ -54,4 +54,12 @@ export class CustomerComponent {
         this.previousOrders = response;
       });
   }
+
+  public isActiveOrdersEmpty(): boolean {
+    return this.activeOrders.length === 0;
+  }
+
+  public isPreviousOrdersEmpty(): boolean {
+    return this.previousOrders.length === 0;
+  }
 }
