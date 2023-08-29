@@ -29,8 +29,6 @@ export class MenuItemComponent {
 
 
   private getItem() {
-    console.log("I'm in get item!")
-
     this.service
       .getMenuItem(this.id)
       .subscribe(
@@ -40,7 +38,6 @@ export class MenuItemComponent {
   }
 
   saveItem() {
-    console.log("COMPONENT: " + this.item.name);
     this.service.saveMenuItem(this.item).subscribe(
       data => {
         this.item = data;
