@@ -16,6 +16,15 @@ export class AppComponent {
               private http: HttpClient,
               private router: Router) {
 
-  }
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        const role = localStorage.getItem('role');
 
+        if (role && role !== 'ADMIN' && event.url.includes('/manage')) {
+          this.router.navigate(['/']);
+        }
+      }
+    })
+
+  }
 }

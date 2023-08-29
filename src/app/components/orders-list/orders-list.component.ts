@@ -86,17 +86,30 @@ export class OrdersListComponent {
         newStatus = 'NEW';
       }
 
-      this.service.update(order.id, newStatus).subscribe(
-        (updatedOrder) => {
-          console.log('Order status updated:', updatedOrder);
-          order.status = newStatus;
-        },
-        (error) => {
-          console.error('Error updating order status:', error);
-        }
-      );
-
+      this.updateOrder(order, newStatus);
     }
+  }
+
+  moveToArchive(order: Order) {
+    let newStatus: string = 'ARCHIVE';
+    this.updateOrder(order, newStatus);
+
+    const index = this.waitingPaymentOrders.indexOf(order);
+    if (index > -1) {
+      this.waitingPaymentOrders.splice(index, 1);
+    }
+  }
+
+  updateOrder(order: Order, newStatus: string) {
+    this.service.update(order.id, newStatus).subscribe(
+      (updatedOrder) => {
+        console.log('Order status updated:', updatedOrder.status);
+        order.status = newStatus;
+      },
+      (error) => {
+        console.error('Error updating order status:', error);
+      }
+    );
   }
 
 }
