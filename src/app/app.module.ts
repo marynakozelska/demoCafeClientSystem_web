@@ -23,6 +23,8 @@ import {CdkDrag, CdkDropList, DragDropModule} from "@angular/cdk/drag-drop";
 import {CommonModule} from "@angular/common";
 import {FooterComponent} from './components/footer/footer.component';
 import {TokenInterceptor} from "./token.interceptors";
+import {SocialLoginModule, SocialAuthServiceConfig, GoogleSigninButtonModule} from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,7 @@ import {TokenInterceptor} from "./token.interceptors";
     DragDropModule,
     HttpClientModule,
     AppRoutingModule,
+    SocialLoginModule,
     RouterModule.forRoot([
         {path: '', component: HomeComponent},
         {path: 'auth/authenticate', component: LoginComponent},
@@ -73,11 +76,26 @@ import {TokenInterceptor} from "./token.interceptors";
     FormsModule,
     NgbModule,
     CdkDropList,
-    CdkDrag
+    CdkDrag,
+    GoogleSigninButtonModule
   ],
   providers: [
     AuthGuardService,
-    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '911853285501-5o3f3kk0eib6tm9lqatrct9ef46bhp9u.apps.googleusercontent.com'
+            )
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    },
   ],
   bootstrap: [AppComponent]
 })

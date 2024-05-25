@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {User} from "../../entities/user";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
+import {environment} from "@ng-bootstrap/ng-bootstrap/environment";
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ import {Router} from "@angular/router";
 export class LoginComponent {
   user: User;
   isWrongData: boolean;
+  gapi: any;
 
   constructor(private authService: AuthService,
               public router: Router) {
@@ -32,5 +34,7 @@ export class LoginComponent {
         this.isWrongData = true;
       })
   }
+
+
 
 }
