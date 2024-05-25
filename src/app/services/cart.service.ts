@@ -3,12 +3,13 @@ import {Cart} from "../entities/cart";
 import {MenuItem} from "../entities/menu-item";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {CartItem} from "../entities/cart-item";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  private baseURL = "http://localhost:8080/order";
+  private baseURL = environment.baseUrl + "/order";
 
   constructor(private http: HttpClient) {
   }

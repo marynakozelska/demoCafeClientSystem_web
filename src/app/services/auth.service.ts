@@ -4,12 +4,12 @@ import {User} from "../entities/user";
 import {Router} from "@angular/router";
 import {catchError, map, Observable, tap, throwError} from "rxjs";
 import {Order} from "../entities/order";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private baseURL = "http://localhost:8080";
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient,
@@ -17,7 +17,7 @@ export class AuthService {
   }
 
   public auth(user: User) {
-    return this.http.post<any>(`${this.baseURL}/auth/authenticate`, user);
+    return this.http.post<any>(`${environment.baseUrl}/auth/authenticate`, user);
   }
 
   public getAccessToken(): string | null {
@@ -56,7 +56,7 @@ export class AuthService {
       .set('isRefreshToken', 'true');
 
     return this.http.post<any>(
-      `${this.baseURL}/auth/refresh-token`,
+      `${environment.baseUrl}/auth/refresh-token`,
       {},
       {headers: headers}
     ).pipe(
@@ -90,14 +90,14 @@ export class AuthService {
     const token = localStorage.getItem('access_token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    return this.http.get<Order[]>(`http://localhost:8080/order`, {headers});
+    return this.http.get<Order[]>(`${environment.baseUrl}/order`, {headers});
   }
 
   public getPreviousOrders() {
     const token = localStorage.getItem('access_token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    return this.http.get<Order[]>(`http://localhost:8080/order/previous`, {headers});
+    return this.http.get<Order[]>(`${environment.baseUrl}/order/previous`, {headers});
 
   }
 }
