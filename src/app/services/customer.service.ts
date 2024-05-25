@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {User} from "../entities/user";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
-  private baseURL = "http://localhost:8080/profile";
+  private baseURL = environment.baseUrl + "/profile";
 
   user: User;
 

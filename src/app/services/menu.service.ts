@@ -2,12 +2,13 @@ import {Injectable} from '@angular/core';
 import {MenuItem} from "../entities/menu-item";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class MenuService {
-  private baseURL = "http://localhost:8080/menu";
+  private baseURL = environment.baseUrl + "/menu";
 
   constructor(private http: HttpClient) {
   }
@@ -34,7 +35,7 @@ export class MenuService {
     const token = localStorage.getItem('access_token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    return this.http.get<string[]>(`http://localhost:8080/categories`, {headers});
+    return this.http.get<string[]>(`${environment.baseUrl}/categories`, {headers});
   }
 
   public getTopDishes() {
